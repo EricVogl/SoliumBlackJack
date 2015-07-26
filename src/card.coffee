@@ -1,5 +1,7 @@
+Suit = require './suit'
+
 class Card
-  suit: ''
+  suit: new Suit('', '')
   rank: ''
 
   constructor: (s, r) ->
@@ -12,6 +14,6 @@ class Card
     else parseInt(@rank, 10)
 
   toString: ->
-    "#{@rank}#{@suit}"
+    "#{@rank}#{@suit.symbol}"
 
 module.exports = Card
