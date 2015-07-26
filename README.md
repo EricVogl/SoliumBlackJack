@@ -1,4 +1,5 @@
-To setup, install Coffeescript and Jest
+To setup, install Coffeescript, Mocha and Chai
 
 $ npm install -g coffee-script
-$ npm install jest-cli --save-dev
+$ npm install -g mocha
+$ npm install -g chai
