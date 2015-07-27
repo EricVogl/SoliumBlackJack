@@ -15,7 +15,7 @@ class Hand
     @shownCards.push card
 
   showAllCards: ->
-    @addShownCard card for card in @hiddenCards
+    @addShownCard @hiddenCards.pop() until @hiddenCards.length is 0
     @hiddenCards = []
 
   clearHand: ->

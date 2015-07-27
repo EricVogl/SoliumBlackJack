@@ -8,15 +8,24 @@ class Game
   deck: new Deck
 
   addPlayer: (player) ->
-    players.push player
+    @players.push player
 
-  start: () ->    
-    dealer.hand.addHiddenCard deck.nextCard
-    dealer.hand.addShownCard deck.nextCard
-
-    for player in players
+  playRound: () ->
+    for player in @players
       player.onGameEnd() if player.chips <= 0
       player.getBet()
-      dealer.dealCard deck.nextCard
+      player.hand.addHiddenCard deck.nextCard
+
+    @dealer.hand.addHiddenCard deck.nextCard
+
+    player.hand.addShowCard deck.nextCard
+
+    @dealer.hand.addShownCard deck.nextCard
+    if @dealer.hand.isNatural()
+      @dealer.hand.showAllCards()
+
+
+
+
 
 mode.exports = Game
