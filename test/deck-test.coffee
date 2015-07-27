@@ -12,9 +12,9 @@ describe 'Deck instance', ->
     deck = new Deck
     map = {}
     mapFunc = (card) ->
-      if map[card.suit.name] is undefined
-        map[card.suit.name] = []
-      map[card.suit.name].push card.rank
+      if map[card.suit] is undefined
+        map[card.suit] = []
+      map[card.suit].push card.rank
     mapFunc(card) for card in deck.cards
     Object.keys(map).length.should.equal 4
     for key, value of map

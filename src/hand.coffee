@@ -1,8 +1,12 @@
 Card = require './card'
 
 class Hand
-  hiddenCards: []
-  shownCards: []
+  hiddenCards: null
+  shownCards: null
+
+  constructor: ->
+    @hiddenCards = []
+    @shownCards = []
 
   addHiddenCard: (card) ->
     @hiddenCards.push card

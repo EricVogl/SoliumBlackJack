@@ -5,17 +5,16 @@ Suit = require '../src/suit'
 
 describe 'Card instance', ->
   card = null
-  suit = new Suit('Spades', '\u2660')
+  suit = Suit.SPADES
   it 'should have a suit', ->
     card = new Card(suit,'A')
-    card.suit.name.should.equal 'Spades'
-    card.suit.symbol.should.equal '\u2660'
+    card.suit.should.equal Suit.SPADES
   it 'should have a rank', ->
     card = new Card(suit,'A')
     card.rank.should.equal 'A'
   it 'should have a pretty print string value', ->
-    card = new Card(suit,'2')
-    card.toString().should.equal '2\u2660'
+    card = new Card(suit,'2')    
+    card.toString().should.equal "2#{Suit.SPADES}"
   it 'should have a value of 11 for Ace', ->
     card = new Card(suit,'A')
     card.value().should.equal 11
