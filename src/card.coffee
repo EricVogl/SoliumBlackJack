@@ -13,6 +13,11 @@ class Card
     else if @rank > 'A' then 10
     else parseInt(@rank, 10)
 
+  lowValue: ->
+    if @rank is 'A' then 1
+    else if @rank > 'A' then 10
+    else parseInt(@rank, 10)
+
   toString: ->
     "#{@rank}#{@suit}"
 

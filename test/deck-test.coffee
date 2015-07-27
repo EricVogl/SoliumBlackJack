@@ -25,3 +25,11 @@ describe 'Deck instance', ->
       card = deck.nextCard()
       deck.cards.should.not.contain card
     checkIt for [1..52]
+  it 'should add discard back to deck when you tell it to', ->
+    deck = new Deck
+    for [1..20]
+      deck.discard deck.nextCard()
+    deck.cards.length.should.equal 32
+    deck.discardPile.length.should.equal 20
+    deck.addDiscardBackToDeck()
+    deck.cards.length.should.equal 52
