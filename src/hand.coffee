@@ -19,10 +19,28 @@ class Hand
     @shownCards = []
 
   value: ->
-    sum = 0
-    sum += card.value() for card in @shownCards
-    sum += card.value() for card in @hiddenCards
-    sum
+    nonAceSum = 0
+    allCards = @allCards()
+    isAce = (card) ->
+      card.rank is 'A'
+    notAce = (card) ->
+      card.rank isnt 'A'
+    nonAceSum += card.value() for card in allCards.filter notAce
+    sumOptions = [nonAceSum]
+    for card in allCards.filter isAce
+      newSumOptions = []
+      for value in sumOptions
+        newSumOptions.push value + card.value()
+        newSumOptions.push value + card.lowValue()
+      sumOptions = newSumOptions
+    minValue = Math.min sumOptions...
+    return minValue if minValue > 21
+    lessThanOrEqualTo21 = (value) ->
+      value <= 21
+    Math.max (sumOptions.filter lessThanOrEqualTo21)...
+
+  isNatural: ->    
+    @allCards().length is 2 and @value() is 21
 
   toStringShownCards: ->
     @shownCards.join(',')

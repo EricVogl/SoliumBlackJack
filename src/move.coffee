@@ -1,3 +1,3 @@
-Move = {STAND: 0, HIT: 1}
-  
+Move = {STAND: 'Stand', HIT: 'Hit'}
+
 module.exports = Move

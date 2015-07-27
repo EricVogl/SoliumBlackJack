@@ -1,0 +1,27 @@
+{
+  "name": "solium-blackjack",
+  "version": "0.0.1",
+  "author": "Eric Vogl",
+  "keywords": [
+    "solium"
+  ],
+  "description": "Blackjack runner for Solium programming competition",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EricVogl/SoliumBlackJack.git"
+  },
+  "dependencies": {
+    "coffee-script": "*"
+  },
+  "engines": {
+    "node": ">= 0.10.x",
+    "npm": ">= 1.4.x"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
+}
