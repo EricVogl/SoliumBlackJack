@@ -14,6 +14,10 @@ class Hand
   addShownCard: (card) ->
     @shownCards.push card
 
+  showAllCards: ->
+    @addShownCard card for card in @hiddenCards
+    @hiddenCards = []
+
   clearHand: ->
     @hiddenCards = []
     @shownCards = []
@@ -39,7 +43,7 @@ class Hand
       value <= 21
     Math.max (sumOptions.filter lessThanOrEqualTo21)...
 
-  isNatural: ->    
+  isNatural: ->
     @allCards().length is 2 and @value() is 21
 
   toStringShownCards: ->

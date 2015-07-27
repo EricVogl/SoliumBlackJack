@@ -18,7 +18,7 @@ describe 'Dealer instance', ->
     dealer.nextMove().should.equal Move.HIT
   it 'should hit when hand value is 16', ->
     dealer = new Dealer
-    dealer.hand.addShownCard (new Card(Suit.CLUBS, '10'))
+    dealer.hand.addShownCard new Card(Suit.CLUBS, '10')
     dealer.hand.addShownCard new Card(Suit.CLUBS, '6')
     dealer.nextMove().should.equal Move.HIT
   it 'should stay when hand value is over 16', ->

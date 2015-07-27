@@ -57,3 +57,20 @@ describe 'Hand instance', ->
                   new Card(Suit.DIAMONDS, '8')]
     hand.addShownCard card for card in shownCards
     hand.isNatural().should.be.notOk
+  it 'should not crash when showing an empty hand', ->
+    hand = new Hand
+    hand.showAllCards()
+    hand.shownCards.should.be.empty
+  it 'should show all cards when showing a hand', ->
+    hand = new Hand
+    startedShown = new Card(Suit.CLUBS, '10')
+    hand.addShownCard startedShown
+    startedHidden1 = new Card(Suit.CLUBS, '6')
+    startedHidden2 = new Card(Suit.CLUBS, '3')
+    hand.addHiddenCard startedHidden1
+    hand.addHiddenCard startedHidden2
+    hand.showAllCards()
+    hand.shownCards.length.should.equal 3
+    chai.expect(hand.shownCards).to.include startedShown
+    chai.expect(hand.shownCards).to.include startedHidden1
+    chai.expect(hand.shownCards).to.include startedHidden2
